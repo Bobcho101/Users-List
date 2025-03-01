@@ -212,6 +212,7 @@ function App() {
         </div>
       </div>
     </section>
+    
     {/* User details component  */}
     {/* <div class="overlay">
 <div class="backdrop"></div>
