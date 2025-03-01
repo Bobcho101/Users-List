@@ -15,6 +15,10 @@ export default function UserCreate({setIsUserCreationVisible}){
         const street = formData.get('street');
         const streetNumber = formData.get('streetNumber');
 
+        if(firstName.trim() == "" || lastName.trim() == "" || email.trim() == "" ||
+        phoneNumber.trim() == "" || imageUrl.trim() == "" || country.trim() == "" ||
+        street.trim() == "" || streetNumber.trim() == "") return;
+
         const address = {
             country,
             city,
