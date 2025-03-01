@@ -5,3 +5,13 @@ export const fetchUsers = async () => {
     const result = await response.json();
     return Object.values(result);
 };
+
+export const createUser = async (data) => {
+    const response = await fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({data})
+    });
+}
