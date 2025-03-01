@@ -52,7 +52,7 @@ export default function UserInfo({hideInfo, currentUser}){
                         <strong> {currentUser.address.country}, {currentUser.address.city}, {currentUser.address.street} {currentUser.address.streetNumber} </strong>
                     </p>
                     <p>
-                        Created on: <strong>Wednesday, June 28, 2022</strong>
+                        Created on: <strong>{currentUser.createdAt}</strong>
                     </p>
                     <p>
                         Modified on: <strong>Thursday, June 29, 2022</strong>
