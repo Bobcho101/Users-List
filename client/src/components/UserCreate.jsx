@@ -1,5 +1,27 @@
 export default function UserCreate({setIsUserCreationVisible}){
+    const userCreateFormHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const firstName = formData.get('firstName');
+        const lastName = formData.get('lastName');
+        const email = formData.get('email');
+        const phoneNumber = formData.get('phoneNumber');
+        const imageUrl = formData.get('imageUrl');
+        
+        const country = formData.get('country');
+        const city = formData.get('city');
+        const street = formData.get('street');
+        const streetNumber = formData.get('streetNumber');
 
+        const address = {
+            country,
+            city,
+            street,
+            streetNumber
+        };
+
+        
+    }
 
     return(
         <>
@@ -27,7 +49,7 @@ export default function UserCreate({setIsUserCreationVisible}){
                         </svg>
                     </button>
                 </header>
-                <form>
+                <form onSubmit={userCreateFormHandler}>
                     <div className="form-row">
                     <div className="form-group">
                         <label htmlFor="firstName">First name</label>
