@@ -1,4 +1,4 @@
-export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, imageUrl, address, showInfo}){
+export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, imageUrl, address, showInfo, showDelete}){
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const isoString = date.toISOString();
@@ -42,7 +42,7 @@ export default function User({ _id, firstName, lastName, email, phoneNumber, cre
                     ></path>
                   </svg>
                 </button>
-                <button className="btn delete-btn" title="Delete">
+                <button className="btn delete-btn" title="Delete" onClick={() => showDelete(_id)}>
                   <svg
                     aria-hidden="true"
                     focusable="false"
