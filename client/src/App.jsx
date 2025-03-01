@@ -1,12 +1,17 @@
+import { useState } from "react"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import List from "./components/List"
+import UserCreate from "./components/userCreate";
 
 function App() {
+    const [isUserCreationVisible, setIsUserCreationVisible] = useState(false);
 
+    const changeUserCreationVisible = () => {
+        setIsUserCreationVisible((curState => !curState));
+    }
 
-
-  return (
+    return (
     <> 
     <Header />
   <main className="main">
@@ -127,7 +132,7 @@ function App() {
         </table>
       </div>
       {/* New user button  */}
-      <button className="btn-add btn">Add new user</button>
+      <button className="btn-add btn" onClick={changeUserCreationVisible}>Add new user</button>
       {/* Pagination component  */}
       <div className="pagination position">
         <div className="limits">
@@ -212,6 +217,8 @@ function App() {
         </div>
       </div>
     </section>
+
+    {isUserCreationVisible && <UserCreate setIsUserCreationVisible={setIsUserCreationVisible} />}
     
     {/* User details component  */}
     {/* <div class="overlay">
@@ -383,9 +390,9 @@ function App() {
   </div>
 </div>
     </div> */}
-  </main>
-  <Footer />
-</>
+    </main>
+    <Footer />
+    </>
   )
 }
 
