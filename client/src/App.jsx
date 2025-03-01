@@ -4,9 +4,12 @@ import Header from "./components/Header"
 import List from "./components/List"
 import UserCreate from "./components/userCreate";
 import { fetchUsers } from "./services/usersApi";
+import UserInfo from "./components/UserInfo";
 
 function App() {
     const [isUserCreationVisible, setIsUserCreationVisible] = useState(false);
+    const [isInfoVisible, setInfoVisible] = useState(false);
+    const [currentUser, setCurrentUser] = useState({});
 
     const changeUserCreationVisible = () => {
         setIsUserCreationVisible((curState => !curState));
@@ -27,6 +30,11 @@ function App() {
     useEffect(() => {
         renderData();
     }, []);
+
+    const showInfo = (user) => {
+        setCurrentUser(user);
+        setInfoVisible(visible => !visible);
+    }
 
     return (
     <> 
@@ -145,7 +153,7 @@ function App() {
       </div> */}
         {/* </div> */}
         <table className="table">
-          <List users={users}/>
+          <List users={users} showInfo={showInfo} />
         </table>
       </div>
       {/* New user button  */}
@@ -236,6 +244,7 @@ function App() {
     </section>
 
     {isUserCreationVisible && <UserCreate refreshUsers={renderData} setIsUserCreationVisible={setIsUserCreationVisible} />}
+    {isInfoVisible && <UserInfo hideInfo={showInfo} currentUser={currentUser} />}
     
     {/* User details component  */}
     {/* <div class="overlay">

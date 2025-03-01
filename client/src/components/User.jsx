@@ -1,4 +1,4 @@
-export default function User(user){
+export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, imageUrl, address, showInfo}){
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const isoString = date.toISOString();
@@ -6,23 +6,23 @@ export default function User(user){
         return result;
     }
 
-    const createdAt = formatDate(user.createdAt);
+    createdAt = formatDate(createdAt);
 
   
     return(
         <>
-            <tr>
+            <tr key={_id}>
               <td>
                 <img
-                  src={user.imageUrl}
+                  src={imageUrl}
                   alt="Peter's profile"
                   className="image"
                 />
               </td>
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
-              <td>{user.email}</td>
-              <td>{user.phoneNumber}</td>
+              <td>{firstName}</td>
+              <td>{lastName}</td>
+              <td>{email}</td>
+              <td>{phoneNumber}</td>
               <td>{createdAt}</td>
               <td className="actions">
                 <button className="btn edit-btn" title="Edit">
@@ -59,7 +59,7 @@ export default function User(user){
                     ></path>
                   </svg>
                 </button>
-                <button className="btn info-btn" title="Info">
+                <button className="btn info-btn" title="Info" onClick={() => showInfo({_id, firstName, lastName, email, phoneNumber, createdAt, imageUrl, address})}>
                   <svg
                     aria-hidden="true"
                     focusable="false"

@@ -1,5 +1,5 @@
 import User from "./User";
-export default function List({users}){
+export default function List({users, showInfo}){
     
     return(
         <>
@@ -102,7 +102,7 @@ export default function List({users}){
           <tbody>
             {/* Table row component */}
 
-            {users.map(user => <User key={user._id} {...user}/>)}
+            {users.map(user => <User key={user._id} {...user} showInfo={showInfo}/>)}
            
             
           </tbody>
