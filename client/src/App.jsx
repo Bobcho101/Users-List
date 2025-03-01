@@ -20,14 +20,11 @@ function App() {
     const [users, setUsers] = useState([]);
 
     const renderData = async () => {
-        try {
-            fetchUsers()
-            .then(data => {
-                setUsers(data);
-            })
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }  
+        fetchUsers()
+        .then(data => {
+            setUsers(data);
+        })
+        .catch(err => console.log(err.message))
     }
     useEffect(() => {
         renderData();
@@ -252,7 +249,7 @@ function App() {
 
     {isUserCreationVisible && <UserCreate refreshUsers={renderData} setIsUserCreationVisible={setIsUserCreationVisible} />}
     {isInfoVisible && <UserInfo hideInfo={showInfo} currentUser={currentUser} />}
-    {isDeleteVisible && <UserDelete hideDelete={showDelete} currentUser={currentUser} />}
+    {isDeleteVisible && <UserDelete refreshUsers={renderData} hideDelete={showDelete} currentUserId={currentUser} />}
 
     {/* User details component  */}
     {/* <div class="overlay">

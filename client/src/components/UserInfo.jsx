@@ -1,6 +1,4 @@
-export default function UserInfo({hideInfo, currentUser}){
-    console.log(currentUser);
-    
+export default function UserInfo({hideInfo, currentUser}){ 
     return(
         <>
         <div className="overlay">

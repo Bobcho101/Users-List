@@ -1,7 +1,16 @@
-export default function UserDelete({ hideDelete, currentUserId }){ 
-    const deleteUserHandler = () => {
-        
-        
+import { deleteUser } from "../services/usersApi"
+
+export default function UserDelete({ hideDelete, currentUserId, refreshUsers }){ 
+    const deleteUserHandler = async () => {
+        try{
+            await deleteUser(currentUserId)
+        } catch(err){
+            console.log(err.message);
+            hideDelete();
+        }
+
+        hideDelete();
+        refreshUsers();
     }
 
     return(

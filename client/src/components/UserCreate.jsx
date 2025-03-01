@@ -26,14 +26,19 @@ export default function UserCreate({setIsUserCreationVisible, refreshUsers}){
             streetNumber
         };
 
-        await createUser({firstName,
-            lastName,
-            email,
-            phoneNumber,
-            imageUrl,
-            address,
-            createdAt: new Date().toISOString()
-        })
+        try{
+            await createUser({firstName,
+                lastName,
+                email,
+                phoneNumber,
+                imageUrl,
+                address,
+                createdAt: new Date().toISOString()
+            })
+        } catch(err){
+            console.log(err.message);
+        }
+        
         setIsUserCreationVisible();
         refreshUsers();
     }
