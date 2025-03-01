@@ -1,10 +1,25 @@
+import { useEffect, useState } from "react";
 import User from "./User";
+import { fetchUsers } from "../services/usersApi";
 
 export default function List(){
-    const fetchUsers = async () => {
-        // const response = await fetch('');
-    };
+    const [users, setUsers] = useState([]);
 
+    const renderData = async () => {
+        try {
+            fetchUsers()
+            .then(data => {
+                setUsers(data);
+            })
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }  
+    }
+
+    useEffect(() => {
+        renderData();
+    }, []);
+    
     return(
         <>
         <thead>
@@ -105,7 +120,9 @@ export default function List(){
           </thead>
           <tbody>
             {/* Table row component */}
-            <User />
+
+            {users.map(user => <User key={user._id} {...user}/>)}
+           
             
           </tbody>
         </>
