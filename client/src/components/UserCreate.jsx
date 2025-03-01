@@ -1,5 +1,7 @@
+import { createUser } from "../services/usersApi";
+
 export default function UserCreate({setIsUserCreationVisible}){
-    const userCreateFormHandler = (e) => {
+    const userCreateFormHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const firstName = formData.get('firstName');
@@ -20,7 +22,15 @@ export default function UserCreate({setIsUserCreationVisible}){
             streetNumber
         };
 
-        
+
+        await createUser({firstName,
+            lastName,
+            email,
+            phoneNumber,
+            imageUrl,
+            address,
+            createdAt: new Date().toISOString()
+    })
     }
 
     return(

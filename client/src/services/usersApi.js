@@ -7,11 +7,11 @@ export const fetchUsers = async () => {
 };
 
 export const createUser = async (data) => {
-    const response = await fetch(baseUrl, {
+    await fetch(baseUrl, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({data})
+        body: JSON.stringify({...data})
     });
 }
