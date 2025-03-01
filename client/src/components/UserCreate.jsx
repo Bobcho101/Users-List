@@ -1,6 +1,6 @@
 import { createUser } from "../services/usersApi";
 
-export default function UserCreate({setIsUserCreationVisible}){
+export default function UserCreate({setIsUserCreationVisible, refreshUsers}){
     const userCreateFormHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -26,7 +26,6 @@ export default function UserCreate({setIsUserCreationVisible}){
             streetNumber
         };
 
-
         await createUser({firstName,
             lastName,
             email,
@@ -34,9 +33,11 @@ export default function UserCreate({setIsUserCreationVisible}){
             imageUrl,
             address,
             createdAt: new Date().toISOString()
-    })
+        })
+        setIsUserCreationVisible();
+        refreshUsers();
     }
-
+    
     return(
         <>
         <div className="overlay">

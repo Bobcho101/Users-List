@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import List from "./components/List"
 import UserCreate from "./components/userCreate";
+import { fetchUsers } from "./services/usersApi";
 
 function App() {
     const [isUserCreationVisible, setIsUserCreationVisible] = useState(false);
@@ -10,6 +11,22 @@ function App() {
     const changeUserCreationVisible = () => {
         setIsUserCreationVisible((curState => !curState));
     }
+
+    const [users, setUsers] = useState([]);
+
+    const renderData = async () => {
+        try {
+            fetchUsers()
+            .then(data => {
+                setUsers(data);
+            })
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }  
+    }
+    useEffect(() => {
+        renderData();
+    }, []);
 
     return (
     <> 
@@ -128,7 +145,7 @@ function App() {
       </div> */}
         {/* </div> */}
         <table className="table">
-          <List />
+          <List users={users}/>
         </table>
       </div>
       {/* New user button  */}
@@ -218,7 +235,7 @@ function App() {
       </div>
     </section>
 
-    {isUserCreationVisible && <UserCreate setIsUserCreationVisible={setIsUserCreationVisible} />}
+    {isUserCreationVisible && <UserCreate refreshUsers={renderData} setIsUserCreationVisible={setIsUserCreationVisible} />}
     
     {/* User details component  */}
     {/* <div class="overlay">
