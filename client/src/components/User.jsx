@@ -1,11 +1,6 @@
-export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, updatedAt, imageUrl, address, showInfo, showDelete, showEdit}){
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const isoString = date.toISOString();
-        const result = isoString.split('T')[0]
-        return result;
-    }
+import { formatDate } from "../services/formatData";
 
+export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, updatedAt, imageUrl, address, showInfo, showDelete, showEdit}){
     createdAt = formatDate(createdAt);
     updatedAt = formatDate(updatedAt);
   
