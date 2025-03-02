@@ -14,6 +14,7 @@ function App() {
     const [isDeleteVisible, setDeleteVisible] = useState(false);
     const [isEditVisible, setEditVisible] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
+    const [query, setQuery] = useState("");
 
     const changeUserCreationVisible = () => {
         setIsUserCreationVisible((curState => !curState));
@@ -47,6 +48,17 @@ function App() {
         setEditVisible(visible => !visible)
     }
 
+    const submitSearchHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const value = formData.get('search');
+        setQuery(value);
+    }
+
+    const clearSearchHandler = (e) => {
+        e.preventDefault();
+        setQuery("");
+    }
     return (
     <> 
     <Header />
@@ -54,7 +66,7 @@ function App() {
     {/* Section component  */}
     <section className="card users-container">
       {/* Search bar component */}
-      <form className="search-form">
+      <form className="search-form" onSubmit={submitSearchHandler}>
         <h2>
           <svg
             aria-hidden="true"
@@ -80,7 +92,7 @@ function App() {
             name="search"
           />
           {/* Show the clear button only if input field length !== 0 */}
-          <button className="btn close-btn">
+          <button className="btn close-btn" onClick={clearSearchHandler} >
             <i className="fa-solid fa-xmark" />
           </button>
           <button className="btn" title="Please, select the search criteria">
@@ -164,7 +176,7 @@ function App() {
       </div> */}
         {/* </div> */}
         <table className="table">
-          <List users={users} showInfo={showInfo} showDelete={showDelete} showEdit={showEdit} />
+          <List users={users} query={query} showInfo={showInfo} showDelete={showDelete} showEdit={showEdit} />
         </table>
       </div>
       {/* New user button  */}
