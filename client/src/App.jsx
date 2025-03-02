@@ -106,12 +106,12 @@ function App() {
         </div>
         <div className="filter">
           <span>Search Criteria:</span>
-          <select name="criteria" className="criteria">
-            <option value="">Not selected</option>
-            <option value="">First Name</option>
-            <option value="">Last Name</option>
-            <option value="">Email</option>
-            <option value="">Phone</option>
+          <select name="criteria" className="criteria" onChange={(e) => changeSelectedFilter(e.target.value)}>
+            <option value="all">Not selected</option>
+            <option value="firstName">First Name</option>
+            <option value="lastName">Last Name</option>
+            <option value="email">Email</option>
+            <option value="phoneNumber">Phone</option>
           </select>
         </div>
       </form>

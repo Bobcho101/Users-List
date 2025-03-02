@@ -1,12 +1,12 @@
 import User from "./User";
-export default function List({users, showInfo, showDelete, showEdit, query, changeSelectedFilter, selectedFilter}){
+export default function List({users, showInfo, showDelete, showEdit, query, selectedFilter}){
     
     return(
         <>
         <thead>
             <tr>
               <th>Image</th>
-              <th onClick={() => changeSelectedFilter("firstName")}>
+              <th>
                 First name
                 <svg
                   aria-hidden="true"
@@ -24,7 +24,7 @@ export default function List({users, showInfo, showDelete, showEdit, query, chan
                   ></path>
                 </svg>
               </th>
-              <th onClick={() => changeSelectedFilter("lastName")}>
+              <th>
                 Last name
                 <svg
                   aria-hidden="true"
@@ -42,7 +42,7 @@ export default function List({users, showInfo, showDelete, showEdit, query, chan
                   ></path>
                 </svg>
               </th>
-              <th onClick={() => changeSelectedFilter("email")}>
+              <th>
                 Email
                 <svg
                   className={selectedFilter === "email" ? "icon active-icon" : "icon"}
@@ -60,7 +60,7 @@ export default function List({users, showInfo, showDelete, showEdit, query, chan
                   ></path>
                 </svg>
               </th>
-              <th onClick={() => changeSelectedFilter("phoneNumber")}>
+              <th>
                 Phone
                 <svg
                   aria-hidden="true"
@@ -78,7 +78,7 @@ export default function List({users, showInfo, showDelete, showEdit, query, chan
                   ></path>
                 </svg>
               </th>
-              <th onClick={() => changeSelectedFilter("createdAt")}>
+              <th>
                 Created
                 <svg
                   aria-hidden="true"
