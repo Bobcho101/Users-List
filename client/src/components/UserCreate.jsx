@@ -33,7 +33,8 @@ export default function UserCreate({setIsUserCreationVisible, refreshUsers}){
                 phoneNumber,
                 imageUrl,
                 address,
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
             })
         } catch(err){
             console.log(err.message);

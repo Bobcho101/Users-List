@@ -1,4 +1,4 @@
-export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, imageUrl, address, showInfo, showDelete}){
+export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, updatedAt, imageUrl, address, showInfo, showDelete}){
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const isoString = date.toISOString();
@@ -7,7 +7,7 @@ export default function User({ _id, firstName, lastName, email, phoneNumber, cre
     }
 
     createdAt = formatDate(createdAt);
-
+    updatedAt = formatDate(updatedAt);
   
     return(
         <>
@@ -59,7 +59,7 @@ export default function User({ _id, firstName, lastName, email, phoneNumber, cre
                     ></path>
                   </svg>
                 </button>
-                <button className="btn info-btn" title="Info" onClick={() => showInfo({_id, firstName, lastName, email, phoneNumber, createdAt, imageUrl, address})}>
+                <button className="btn info-btn" title="Info" onClick={() => showInfo({_id, firstName, lastName, email, phoneNumber, createdAt, updatedAt, imageUrl, address})}>
                   <svg
                     aria-hidden="true"
                     focusable="false"

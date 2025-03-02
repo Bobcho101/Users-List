@@ -55,7 +55,7 @@ export default function UserInfo({hideInfo, currentUser}){
                         Created on: <strong>{currentUser.createdAt}</strong>
                     </p>
                     <p>
-                        Modified on: <strong>Thursday, June 29, 2022</strong>
+                        Modified on: <strong>{currentUser.updatedAt}</strong>
                     </p>
                     </div>
                 </div>
