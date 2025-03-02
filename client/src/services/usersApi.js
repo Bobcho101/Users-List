@@ -20,3 +20,12 @@ export const deleteUser = async (userId) => {
         method: "DELETE",
     }); 
 }
+export const editUser = async (userId, newData) => {
+    await fetch(`${baseUrl}/${userId}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({...newData})
+    })
+}
