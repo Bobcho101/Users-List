@@ -1,19 +1,19 @@
 import User from "./User";
-export default function List({users, showInfo, showDelete, showEdit, query}){
+export default function List({users, showInfo, showDelete, showEdit, query, changeSelectedFilter, selectedFilter}){
     
     return(
         <>
         <thead>
             <tr>
               <th>Image</th>
-              <th>
+              <th onClick={() => changeSelectedFilter("firstName")}>
                 First name
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fas"
                   data-icon="arrow-down"
-                  className="icon svg-inline--fa fa-arrow-down Table_icon__+HHgn"
+                  className={selectedFilter === "firstName" ? "icon active-icon svg-inline--fa fa-arrow-down Table_icon__+HHgn": "icon svg-inline--fa fa-arrow-down Table_icon__+HHgn"}
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 384 512"
@@ -24,14 +24,14 @@ export default function List({users, showInfo, showDelete, showEdit, query}){
                   ></path>
                 </svg>
               </th>
-              <th>
+              <th onClick={() => changeSelectedFilter("lastName")}>
                 Last name
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fas"
                   data-icon="arrow-down"
-                  className="icon svg-inline--fa fa-arrow-down Table_icon__+HHgn"
+                  className={selectedFilter === "lastName" ? "icon active-icon svg-inline--fa fa-arrow-down Table_icon__+HHgn": "icon svg-inline--fa fa-arrow-down Table_icon__+HHgn"}
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 384 512"
@@ -42,10 +42,10 @@ export default function List({users, showInfo, showDelete, showEdit, query}){
                   ></path>
                 </svg>
               </th>
-              <th>
+              <th onClick={() => changeSelectedFilter("email")}>
                 Email
                 <svg
-                  className="icon"
+                  className={selectedFilter === "email" ? "icon active-icon" : "icon"}
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fas"
@@ -60,14 +60,14 @@ export default function List({users, showInfo, showDelete, showEdit, query}){
                   ></path>
                 </svg>
               </th>
-              <th>
+              <th onClick={() => changeSelectedFilter("phoneNumber")}>
                 Phone
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fas"
                   data-icon="arrow-down"
-                  className="icon svg-inline--fa fa-arrow-down Table_icon__+HHgn"
+                  className={selectedFilter === "phoneNumber" ? "icon active-icon svg-inline--fa fa-arrow-down Table_icon__+HHgn": "icon svg-inline--fa fa-arrow-down Table_icon__+HHgn"}
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 384 512"
@@ -78,14 +78,14 @@ export default function List({users, showInfo, showDelete, showEdit, query}){
                   ></path>
                 </svg>
               </th>
-              <th>
+              <th onClick={() => changeSelectedFilter("createdAt")}>
                 Created
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fas"
                   data-icon="arrow-down"
-                  className="icon active-icon svg-inline--fa fa-arrow-down Table_icon__+HHgn"
+                  className={selectedFilter === "createdAt" ? "icon active-icon svg-inline--fa fa-arrow-down Table_icon__+HHgn": "icon svg-inline--fa fa-arrow-down Table_icon__+HHgn"}
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 384 512"
@@ -102,7 +102,7 @@ export default function List({users, showInfo, showDelete, showEdit, query}){
           <tbody>
             {/* Table row component */}
 
-            {users.map(user => <User key={user._id} {...user} showInfo={showInfo} showDelete={showDelete} showEdit={showEdit} query={query} />)}
+            {users.map(user => <User key={user._id} {...user} showInfo={showInfo} showDelete={showDelete} showEdit={showEdit} query={query} selectedFilter={selectedFilter} />)}
            
            
             

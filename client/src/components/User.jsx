@@ -1,10 +1,25 @@
 import { formatDate } from "../services/formatData";
 
-export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, updatedAt, imageUrl, address, showInfo, showDelete, showEdit, query}){
+export default function User({
+     _id, firstName, lastName, 
+    email, phoneNumber, createdAt, 
+    updatedAt, imageUrl, address, 
+    showInfo, showDelete, showEdit, 
+    query, selectedFilter})
+    {
     createdAt = formatDate(createdAt);
     updatedAt = formatDate(updatedAt);
+
+    const filtersObj = {
+        "firstName": firstName,
+        "lastName": lastName,
+        "email": email,
+        "phoneNumber": phoneNumber,
+        "createdAt": createdAt,
+    };
+    const currentFilter = filtersObj[selectedFilter];
   
-    if(firstName.toLowerCase().includes(query.toLowerCase())){
+    if(currentFilter.toLowerCase().includes(query.toLowerCase())){
         return(
             <>
         <tr key={_id}>

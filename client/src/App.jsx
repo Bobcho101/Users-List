@@ -15,6 +15,7 @@ function App() {
     const [isEditVisible, setEditVisible] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [query, setQuery] = useState("");
+    const [selectedFilter, setSelectedFilter] = useState("firstName");
 
     const changeUserCreationVisible = () => {
         setIsUserCreationVisible((curState => !curState));
@@ -46,6 +47,10 @@ function App() {
     const showEdit = (user) => {
         setCurrentUser(user);
         setEditVisible(visible => !visible)
+    }
+
+    const changeSelectedFilter = (filter) => {
+        setSelectedFilter(filter);
     }
 
     const submitSearchHandler = (e) => {
@@ -176,7 +181,11 @@ function App() {
       </div> */}
         {/* </div> */}
         <table className="table">
-          <List users={users} query={query} showInfo={showInfo} showDelete={showDelete} showEdit={showEdit} />
+          <List users={users} query={query} showInfo={showInfo} 
+          showDelete={showDelete} showEdit={showEdit} 
+          changeSelectedFilter={changeSelectedFilter}
+          selectedFilter={selectedFilter}
+          />
         </table>
       </div>
       {/* New user button  */}
