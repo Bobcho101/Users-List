@@ -3,6 +3,29 @@ export default function UserEdit({ hideEdit, currentUser }){
     const editUserHandler = (e) => {
         e.preventDefault();
         
+        const formData = new FormData(e.target);
+        const firstName = formData.get('firstName');
+        const lastName = formData.get('lastName');
+        const email = formData.get('email');
+        const phoneNumber = formData.get('phoneNumber');
+        const imageUrl = formData.get('imageUrl');
+        
+        const country = formData.get('country');
+        const city = formData.get('city');
+        const street = formData.get('street');
+        const streetNumber = formData.get('streetNumber');
+
+        if(firstName.trim() == "" || lastName.trim() == "" || email.trim() == "" ||
+        phoneNumber.trim() == "" || imageUrl.trim() == "" || country.trim() == "" ||
+        street.trim() == "" || streetNumber.trim() == "") return;
+
+        const address = {
+            country,
+            city,
+            street,
+            streetNumber
+        };
+
     }
 
     return(
@@ -31,7 +54,7 @@ export default function UserEdit({ hideEdit, currentUser }){
                     </svg>
                     </button>
                 </header>
-                <form>
+                <form onSubmit={editUserHandler}>
                     <div className="form-row">
                     <div className="form-group">
                         <label htmlFor="firstName">First name</label>
