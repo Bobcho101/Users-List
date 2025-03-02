@@ -15,7 +15,7 @@ function App() {
     const [isEditVisible, setEditVisible] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [query, setQuery] = useState("");
-    const [selectedFilter, setSelectedFilter] = useState("firstName");
+    const [selectedFilter, setSelectedFilter] = useState("all");
 
     const changeUserCreationVisible = () => {
         setIsUserCreationVisible((curState => !curState));
