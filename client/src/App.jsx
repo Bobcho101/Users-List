@@ -6,11 +6,13 @@ import UserCreate from "./components/userCreate";
 import { fetchUsers } from "./services/usersApi";
 import UserInfo from "./components/UserInfo";
 import UserDelete from "./components/UserDelete";
+import UserEdit from "./components/UserEdit";
 
 function App() {
     const [isUserCreationVisible, setIsUserCreationVisible] = useState(false);
     const [isInfoVisible, setInfoVisible] = useState(false);
     const [isDeleteVisible, setDeleteVisible] = useState(false);
+    const [isEditVisible, setEditVisible] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
 
     const changeUserCreationVisible = () => {
@@ -38,6 +40,11 @@ function App() {
     const showDelete = (userId) => {
         setCurrentUser(userId);
         setDeleteVisible(visible => !visible);
+    }
+
+    const showEdit = (user) => {
+        setCurrentUser(user);
+        setDeleteVisible(visible => !visible)
     }
 
     return (
@@ -157,7 +164,7 @@ function App() {
       </div> */}
         {/* </div> */}
         <table className="table">
-          <List users={users} showInfo={showInfo} showDelete={showDelete}/>
+          <List users={users} showInfo={showInfo} showDelete={showDelete} showEdit={showEdit} />
         </table>
       </div>
       {/* New user button  */}
@@ -250,7 +257,7 @@ function App() {
     {isUserCreationVisible && <UserCreate refreshUsers={renderData} setIsUserCreationVisible={setIsUserCreationVisible} />}
     {isInfoVisible && <UserInfo hideInfo={showInfo} currentUser={currentUser} />}
     {isDeleteVisible && <UserDelete refreshUsers={renderData} hideDelete={showDelete} currentUserId={currentUser} />}
-
+    {isEditVisible && <UserEdit />}
     {/* User details component  */}
     {/* <div class="overlay">
 <div class="backdrop"></div>
