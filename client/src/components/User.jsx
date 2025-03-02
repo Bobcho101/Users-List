@@ -1,4 +1,4 @@
-export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, updatedAt, imageUrl, address, showInfo, showDelete}){
+export default function User({ _id, firstName, lastName, email, phoneNumber, createdAt, updatedAt, imageUrl, address, showInfo, showDelete, showEdit}){
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const isoString = date.toISOString();
@@ -25,7 +25,7 @@ export default function User({ _id, firstName, lastName, email, phoneNumber, cre
               <td>{phoneNumber}</td>
               <td>{createdAt}</td>
               <td className="actions">
-                <button className="btn edit-btn" title="Edit">
+                <button className="btn edit-btn" title="Edit" onClick={() => showEdit({_id, firstName, lastName, email, phoneNumber, createdAt, updatedAt, imageUrl, address})}>
                   <svg
                     aria-hidden="true"
                     focusable="false"

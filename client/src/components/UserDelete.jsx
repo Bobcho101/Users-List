@@ -21,7 +21,7 @@ export default function UserDelete({ hideDelete, currentUserId, refreshUsers }){
                 <div className="confirm-container">
                 <header className="headers">
                     <h2>Are you sure you want to delete this account?</h2>
-                    <button className="btn close">
+                    <button className="btn close" onClick={() => hideDelete()}>
                     <svg
                         aria-hidden="true"
                         focusable="false"

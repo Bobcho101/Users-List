@@ -1,4 +1,7 @@
-export default function UserEdit(){
+export default function UserEdit({ hideEdit, currentUser }){
+
+   
+
     return(
         <>
         <div className="overlay">
@@ -7,7 +10,7 @@ export default function UserEdit(){
                 <div className="user-container">
                 <header className="headers">
                     <h2>Edit User</h2>
-                    <button className="btn close">
+                    <button className="btn close" onClick={() => hideEdit()}>
                     <svg
                         aria-hidden="true"
                         focusable="false"
@@ -33,7 +36,7 @@ export default function UserEdit(){
                         <span>
                             <i className="fa-solid fa-user" />
                         </span>
-                        <input id="firstName" name="firstName" type="text" />
+                        <input id="firstName" name="firstName" type="text" defaultValue={currentUser.firstName} />
                         </div>
                     </div>
                     <div className="form-group">
@@ -42,7 +45,7 @@ export default function UserEdit(){
                         <span>
                             <i className="fa-solid fa-user" />
                         </span>
-                        <input id="lastName" name="lastName" type="text" />
+                        <input id="lastName" name="lastName" type="text" defaultValue={currentUser.lastName} />
                         </div>
                     </div>
                     </div>
@@ -53,7 +56,7 @@ export default function UserEdit(){
                         <span>
                             <i className="fa-solid fa-envelope" />
                         </span>
-                        <input id="email" name="email" type="text" />
+                        <input id="email" name="email" type="text" defaultValue={currentUser.email} />
                         </div>
                     </div>
                     <div className="form-group">
@@ -62,7 +65,7 @@ export default function UserEdit(){
                         <span>
                             <i className="fa-solid fa-phone" />
                         </span>
-                        <input id="phoneNumber" name="phoneNumber" type="text" />
+                        <input id="phoneNumber" name="phoneNumber" type="text" defaultValue={currentUser.phoneNumber} />
                         </div>
                     </div>
                     </div>
@@ -72,7 +75,7 @@ export default function UserEdit(){
                         <span>
                         <i className="fa-solid fa-image" />
                         </span>
-                        <input id="imageUrl" name="imageUrl" type="text" />
+                        <input id="imageUrl" name="imageUrl" type="text" defaultValue={currentUser.imageUrl} />
                     </div>
                     </div>
                     <div className="form-row">
@@ -82,7 +85,7 @@ export default function UserEdit(){
                         <span>
                             <i className="fa-solid fa-map" />
                         </span>
-                        <input id="country" name="country" type="text" />
+                        <input id="country" name="country" type="text" defaultValue={currentUser.address.country} />
                         </div>
                     </div>
                     <div className="form-group">
@@ -91,7 +94,7 @@ export default function UserEdit(){
                         <span>
                             <i className="fa-solid fa-city" />
                         </span>
-                        <input id="city" name="city" type="text" />
+                        <input id="city" name="city" type="text" defaultValue={currentUser.address.city} />
                         </div>
                     </div>
                     </div>
@@ -102,7 +105,7 @@ export default function UserEdit(){
                         <span>
                             <i className="fa-solid fa-map" />
                         </span>
-                        <input id="street" name="street" type="text" />
+                        <input id="street" name="street" type="text" defaultValue={currentUser.address.street} />
                         </div>
                     </div>
                     <div className="form-group">
@@ -111,7 +114,7 @@ export default function UserEdit(){
                         <span>
                             <i className="fa-solid fa-house-chimney" />
                         </span>
-                        <input id="streetNumber" name="streetNumber" type="text" />
+                        <input id="streetNumber" name="streetNumber" type="text" defaultValue={currentUser.address.streetNumber} />
                         </div>
                     </div>
                     </div>
@@ -119,7 +122,7 @@ export default function UserEdit(){
                     <button id="action-save" className="btn" type="submit">
                         Save
                     </button>
-                    <button id="action-cancel" className="btn" type="button">
+                    <button id="action-cancel" className="btn" type="button" onClick={() => hideEdit()}>
                         Cancel
                     </button>
                     </div>

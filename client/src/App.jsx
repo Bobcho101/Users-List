@@ -44,7 +44,7 @@ function App() {
 
     const showEdit = (user) => {
         setCurrentUser(user);
-        setDeleteVisible(visible => !visible)
+        setEditVisible(visible => !visible)
     }
 
     return (
@@ -257,7 +257,7 @@ function App() {
     {isUserCreationVisible && <UserCreate refreshUsers={renderData} setIsUserCreationVisible={setIsUserCreationVisible} />}
     {isInfoVisible && <UserInfo hideInfo={showInfo} currentUser={currentUser} />}
     {isDeleteVisible && <UserDelete refreshUsers={renderData} hideDelete={showDelete} currentUserId={currentUser} />}
-    {isEditVisible && <UserEdit />}
+    {isEditVisible && <UserEdit hideEdit={showEdit} currentUser={currentUser} />}
     {/* User details component  */}
     {/* <div class="overlay">
 <div class="backdrop"></div>
