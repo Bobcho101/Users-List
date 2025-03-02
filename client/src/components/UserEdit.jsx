@@ -1,6 +1,9 @@
 export default function UserEdit({ hideEdit, currentUser }){
 
-   
+    const editUserHandler = (e) => {
+        e.preventDefault();
+        
+    }
 
     return(
         <>
