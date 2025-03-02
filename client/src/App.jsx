@@ -257,7 +257,7 @@ function App() {
     {isUserCreationVisible && <UserCreate refreshUsers={renderData} setIsUserCreationVisible={setIsUserCreationVisible} />}
     {isInfoVisible && <UserInfo hideInfo={showInfo} currentUser={currentUser} />}
     {isDeleteVisible && <UserDelete refreshUsers={renderData} hideDelete={showDelete} currentUserId={currentUser} />}
-    {isEditVisible && <UserEdit hideEdit={showEdit} currentUser={currentUser} />}
+    {isEditVisible && <UserEdit hideEdit={showEdit} currentUser={currentUser} refreshUsers={renderData} />}
     {/* User details component  */}
     {/* <div class="overlay">
 <div class="backdrop"></div>

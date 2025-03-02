@@ -1,8 +1,10 @@
-export default function UserEdit({ hideEdit, currentUser }){
+import { editUser } from "../services/usersApi";
 
-    const editUserHandler = (e) => {
+export default function UserEdit({ hideEdit, currentUser, refreshUsers }){
+
+    const editUserHandler = async (e) => {
         e.preventDefault();
-        
+
         const formData = new FormData(e.target);
         const firstName = formData.get('firstName');
         const lastName = formData.get('lastName');
@@ -26,6 +28,26 @@ export default function UserEdit({ hideEdit, currentUser }){
             streetNumber
         };
 
+
+        try{
+            await editUser(currentUser._id, {
+                _id: currentUser._id,
+                firstName,
+                lastName,
+                email,
+                phoneNumber,
+                imageUrl,
+                address,
+                createdAt: currentUser.createdAt,
+                updatedAt: new Date().toISOString(),
+            })
+        } catch(err){
+            console.log(err.message); 
+        }
+
+    
+        hideEdit();
+        refreshUsers();
     }
 
     return(
