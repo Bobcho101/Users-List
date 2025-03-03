@@ -21,7 +21,7 @@
     ```bash
     npm install
     ```
-- Server is clear node.js
+- The server is clear node.js (*no express*)
 
 2. **Run the Server**: Open integrated terminal in the server folder and type:
     ```bash
